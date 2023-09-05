@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Praktikum 1</title>
+</head>
+<body>
+    <h2>Form Tambah Data Produk</h2>
+    <form method="POST" autocomplete="on" action="">
+    <table>
+        <tr>
+            <td>Nama Produk</td>
+            <td> : </td>
+            <td><input type="text" name="name" size="30" minlength="5" maxlength="30" required></td>
+        </tr>
+        <tr>
+            <td>Deskripsi</td>
+            <td> : </td>
+            <td><textarea name="text" rows="5" cols="30" required></textarea></td>
+        </tr>
+        <tr>
+            <td>Kategori</td>
+            <td> : </td>
+            <td><select id="kategori" required>
+                <option value="none">--Pilih Kategori--</option>
+                <option value="Baju">Baju</option>
+                <option value="Elektronik">Elektronik</option>
+                <option value="Alat tulis">Alat Tulis</option>
+            </select>
+            </td>  
+        </tr>
+        <tr>
+            <td>Sub Kategori</td>
+            <td> : </td>
+            <td><select id="Subkategori" required>
+                <option value="none">--Pilih Sub Kategori--</option>
+                <option value="Baju Pria">Baju Pria</option>
+                <option value="Baju wanita">Baju Wanita</option>
+                <option value="Baju anak">Baju Anak</option>
+                <option value="Mesin cuci">Mesin Cuci</option>
+                <option value="Kulkas">Kulkas</option>
+                <option value="AC">AC</option>
+                <option value="Kertas">Kertas</option>
+                <option value="Map">Map</option>
+                <option value="Pulpen">Pulpen</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Harga Satuan</td>
+            <td> : </td>
+            <td><input type="number" name="harga_grosir" required></td>
+        </tr>
+        <tr>
+            <td>Grosir</td>
+            <td> : </td>
+            <td>
+                <input type="radio" name="grosir" value="Ya">Ya <br />
+                <input type="radio" name="grosir" value="Tidak">Tidak
+            </td>
+        </tr>
+        <tr>
+            <td>Harga Grosir</td>
+            <td> : </td>
+            <td>
+                <input type="number" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Jasa Kirim</td>
+            <td> : </td>
+            <td>
+                <input type="checkbox" name="jasakirim[]" value="JNE">JNE <br />
+                <input type="checkbox" name="jasakirim[]" value="TIKI">TIKI <br />
+                <input type="checkbox" name="jasakirim[]" value="SiCepat">SiCepat <br />
+                <input type="checkbox" name="jasakirim[]" value="Ninja Express">Ninja Express <br />
+                <input type="checkbox" name="jasakirim[]" value="Wahana">Wahana <br />
+            </td>
+        </tr>
+        <!-- <tr>
+            <td><label for="captcha_input">Captcha</label></td>
+            <td>
+              <input type="text" name="captcha_text" size="10" disabled>
+              <input type="text" name="captcha_input" id="captcha_input" size="10" required>
+            </td>
+        </tr> -->
+        <tr>
+            <td colspan="3"><br />
+                <input type="submit" name="submit" value="Submit">&nbsp;
+                <input type="reset" name="reset" value="Reset">
+            </td>
+        </tr>
+    </table>
+    </form>
+    <script>
+    //     function generateCaptcha() {
+    //   var captchaText = "";
+    //   var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    //   for (var i = 0; i < 5; i++) {
+    //     var randomIndex = Math.floor(Math.random() * characters.length);
+    //     captchaText += characters.charAt(randomIndex);
+    //   }
+    //   document.forms["formRegistration"]["captcha_text"].value = captchaText;
+    // }
+
+    // var captchaInput = document.forms["formRegistration"]["captcha_input"].value;
+    //   var captchaText = document.forms["formRegistration"]["captcha_text"].value;
+    //   if (captchaInput.toLowerCase() !== captchaText.toLowerCase()) {
+    //     alert("Captcha tidak sesuai. Coba lagi.");
+    //     return false;
+    //   }
+
+    //   alert('Sukses! Terima kasih telah mengisi formulir.');
+    //   return true;
+    
+        var kategoriSelect = document.getElementById("kategori");
+        var subkategoriSelect = document.getElementById("Subkategori");
+
+        kategoriSelect.addEventListener("change",function(){
+           while (subkategoriSelect.options.length > 0){
+            subkategoriSelect.options.remove(0);
+           }
+
+           if(kategoriSelect.value === "Baju"){
+            subkategoriSelect.add(new Option("Baju Pria", "Baju Pria"));
+            subkategoriSelect.add(new Option("Baju Wanita", "Baju Wanita"));
+            subkategoriSelect.add(new Option("Baju Anak", "Baju Anak"));
+           } else if(kategoriSelect.value === "Elektronik"){
+            subkategoriSelect.add(new Option("Mesin Cuci", "Mesin Cuci"));
+            subkategoriSelect.add(new Option("Kulkas", "Kulkas"));
+            subkategoriSelect.add(new Option("AC", "AC"));
+           } else if(kategoriSelect.value === "Alat Tulis"){
+            subkategoriSelect.add(new Option("Kertas", "Kertas"));
+            subkategoriSelect.add(new Option("Map", "Map"));
+            subkategoriSelect.add(new Option("Pulpen", "Pulpen"));
+           }
+        })
+    </script>
+</body>
+</html>
